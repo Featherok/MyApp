@@ -34,8 +34,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         ViewController.x = 0
         setupUI()
-        print(autoContentAccessingProxy)
-        print(nameForUser)
 
         
         self.hideKeyboardWhenTappedAround()
