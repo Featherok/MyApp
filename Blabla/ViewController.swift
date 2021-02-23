@@ -22,6 +22,10 @@ class ViewController: UIViewController {
                 }
                 
                 }
+//            static let tempT = object
+//            func temp() -> [PFObject] {
+//                return object!
+//            }
             
             if error == nil {
                 
@@ -34,9 +38,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         ViewController.x = 0
         setupUI()
-        print(autoContentAccessingProxy)
-        print(nameForUser)
-
+        
+        print("all the same to fuck ur mom")
         
         self.hideKeyboardWhenTappedAround()
         nameForUser.isUserInteractionEnabled = false
@@ -55,6 +58,7 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(true)
+//        loadHomeScreen()
         let currentUser = PFUser.current()
         if currentUser == nil {
             loadHomeScreen()
