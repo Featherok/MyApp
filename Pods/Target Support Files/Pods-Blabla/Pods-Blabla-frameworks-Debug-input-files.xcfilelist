@@ -1,0 +1,8 @@
+${PODS_ROOT}/Target Support Files/Pods-Blabla/Pods-Blabla-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
+${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework
+${BUILT_PRODUCTS_DIR}/FLKAutoLayout/FLKAutoLayout.framework
+${BUILT_PRODUCTS_DIR}/ORStackView/ORStackView.framework
+${BUILT_PRODUCTS_DIR}/Parse/Parse.framework
+${BUILT_PRODUCTS_DIR}/ParseSwift/ParseSwift.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework

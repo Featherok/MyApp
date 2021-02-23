@@ -1,0 +1,6 @@
+framework module Pods_Blabla {
+  umbrella header "Pods-Blabla-umbrella.h"
+
+  export *
+  module * { export * }
+}
