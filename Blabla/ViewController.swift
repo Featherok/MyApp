@@ -9,31 +9,10 @@ import UIKit
 import AudioToolbox
 import Parse
 class ViewController: UIViewController {
-    static let query = PFQuery(className: "UserSettings")
+    
     override func viewDidLoad() {
-        ViewController.query.whereKey("userName", equalTo: PFUser.current()?.username!)
-        ViewController.query.findObjectsInBackground {
-            (object, error) in
-            
-            
-            if let objects = object {
-                for object in objects {
-                    self.userName.text = object["userName"] as? String
-                }
-                
-                }
-//            static let tempT = object
-//            func temp() -> [PFObject] {
-//                return object!
-//            }
-            
-            if error == nil {
-                
-                // succcess
-            } else {
-                // fail
-            }
-        }
+        
+
     
         super.viewDidLoad()
         ViewController.x = 0
@@ -132,7 +111,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func logOutTheApp(_ sender: UIButton) {
-        saveData(nameOfClass: "UserSettings", nameOfObject: "userName", value: userName.text!)
+//            saveData(nameOfClass: "UserSettings", nameOfObject: "userName", value: userName.text!)
         let sv = UIViewController.displaySpinner(onView: self.view)
         PFUser.logOutInBackground { (error: Error?) in
             UIViewController.removeSpinner(spinner: sv)
