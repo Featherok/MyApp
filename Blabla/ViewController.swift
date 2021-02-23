@@ -39,7 +39,7 @@ class ViewController: UIViewController {
         ViewController.x = 0
         setupUI()
         
-        print("all the same to fuck ur mom")
+
         
         self.hideKeyboardWhenTappedAround()
         nameForUser.isUserInteractionEnabled = false
