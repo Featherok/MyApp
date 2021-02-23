@@ -22,10 +22,6 @@ class ViewController: UIViewController {
                 }
                 
                 }
-//            static let tempT = object
-//            func temp() -> [PFObject] {
-//                return object!
-//            }
             
             if error == nil {
                 
@@ -58,7 +54,6 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(true)
-//        loadHomeScreen()
         let currentUser = PFUser.current()
         if currentUser == nil {
             loadHomeScreen()
