@@ -39,9 +39,23 @@ extension UIViewController {
         @objc func dismissKeyboard() {
             view.endEditing(true)
         }
-    func saveData(nameOfClass a: String, nameOfObject object: String, value valueOfObject: Any)  {
+    func saveData(nameOfClass a: String, nameOfObject object: String, value valueOfObject: Any, secondObject: String? = nil, secondValue: Any? = nil, thirdObject: String? = nil, thirdValue: Any? = nil, fourthValue: Any? = nil)  {
         let someTempVar = PFObject(className: a)
-        someTempVar[String(object)] = valueOfObject
+        if secondValue == nil {
+        someTempVar[object] = valueOfObject
+        } else if thirdValue == nil {
+            someTempVar[object] = valueOfObject
+            someTempVar[secondObject!] = secondValue
+        } else if fourthValue == nil{
+            someTempVar[object] = valueOfObject
+            someTempVar[secondObject!] = secondValue
+            someTempVar[thirdObject!] = thirdValue
+        } else {
+            someTempVar[object] = valueOfObject
+            someTempVar[object] = secondValue
+            someTempVar[object] = thirdValue
+            someTempVar[object] = fourthValue
+        }
         someTempVar.saveInBackground { (success, error) in
             if success {
                 // success
@@ -51,17 +65,37 @@ extension UIViewController {
             }
     }
 }
-    func updateData(nameOfClass a: String, nameOfObject object: String, value valueOfObject: Any) {
-        let someTempVar = PFObject(className: a)
-        someTempVar[String(object)] = valueOfObject
-        someTempVar.fetchInBackground { (object, error) in
-            if error == nil {
-                // success
-            }
-            else {
-                // fail
-            }
+    func updateData(nameOfClass a: String, nameOfObject objectWithShit: String, value valueOfObject: Any) {
+        let upQeury = PFQuery(className: a)
+//        let upObject = PFObject(className: a)
+        
+        if let currentUserName = PFUser.current()?.username {
+            upQeury.whereKey("userName", equalTo: currentUserName)
         }
-    }
+        
+        upQeury.findObjectsInBackground { (objects, error) in
+            
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        print(object)
+                        print(object.objectId!)
+                        upQeury.getObjectInBackground(withId: object.objectId!){ (upObject, error) in
+                            if error != nil {
+                                
+                            } else if let upObject = upObject {
+                                upObject[objectWithShit] = valueOfObject
+                                print(upObject[objectWithShit])
+                                print("updated success")
+                                upObject.saveInBackground()
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
 
+    }
+    
 }

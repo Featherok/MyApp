@@ -11,14 +11,15 @@ import Parse
 class ViewController: UIViewController {
     static let query = PFQuery(className: "UserSettings")
     override func viewDidLoad() {
-        ViewController.query.whereKey("userName", equalTo: PFUser.current()?.username!)
+        ViewController.query.whereKey("userName", equalTo: PFUser.current()?.username as Any)
         ViewController.query.findObjectsInBackground {
             (object, error) in
             
             
             if let objects = object {
                 for object in objects {
-                    self.userName.text = object["userName"] as? String
+                    self.userName.text = object["userNic"] as? String
+
                 }
                 
                 }
@@ -101,7 +102,7 @@ class ViewController: UIViewController {
     }
     @IBOutlet var tapAndSav: UIButton!
     @IBAction func tapAndSave(_ sender: Any) {
-        
+        updateData(nameOfClass: "UserSettings", nameOfObject: "userNic", value: userName.text as Any)
         if nameForUser.text?.isEmpty == true {
             userName.text = "*user*"
         } else {
@@ -132,7 +133,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func logOutTheApp(_ sender: UIButton) {
-        saveData(nameOfClass: "UserSettings", nameOfObject: "userName", value: userName.text!)
+
         let sv = UIViewController.displaySpinner(onView: self.view)
         PFUser.logOutInBackground { (error: Error?) in
             UIViewController.removeSpinner(spinner: sv)

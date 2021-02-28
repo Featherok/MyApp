@@ -34,8 +34,7 @@ class LoggedInViewController:
     @IBOutlet fileprivate var textFieldUserPassword: UITextField!
     
     @IBAction func singUp(_ sender: UIButton) {
-        saveData(nameOfClass: "UserSettings", nameOfObject: "userName", value: textFieldUserName.text!)
-        saveData(nameOfClass: "UserSettings", nameOfObject: "userNic", value: textFieldUserName.text!)
+        saveData(nameOfClass: "UserSettings", nameOfObject: "userName", value: textFieldUserName.text!, secondObject: "userNic", secondValue: textFieldUserName.text!)
         
         
         let user = PFUser()
