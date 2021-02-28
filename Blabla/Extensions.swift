@@ -51,24 +51,17 @@ extension UIViewController {
             }
     }
 }
-    func updateData(nameOfClass a: String, nameOfObject objectToUpdate: String, value valueOfObject: Any) {
-        let query = PFQuery(className: a)
-        
-        query.whereKey(objectToUpdate, equalTo: PFUser.current()?.username as Any)
-        query.findObjectsInBackground {
-            (object, error) in
-            
-            if error != nil {
-                print(error!)
-            } else if let object = object {
-                var xyu = object["jh"]
-           }
+    func updateData(nameOfClass a: String, nameOfObject object: String, value valueOfObject: Any) {
+        let someTempVar = PFObject(className: a)
+        someTempVar[String(object)] = valueOfObject
+        someTempVar.fetchInBackground { (object, error) in
+            if error == nil {
+                // success
+            }
+            else {
+                // fail
+            }
         }
-            
-        }
-    
-    
-    
-    
+    }
 
 }
