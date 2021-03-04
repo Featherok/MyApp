@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Parse
 
-extension UIViewController {
+extension UIViewController{
  class func displaySpinner(onView : UIView) -> UIView {
      let spinnerView = UIView.init(frame: onView.bounds)
      spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
@@ -75,7 +75,6 @@ extension UIViewController {
         
         upQeury.findObjectsInBackground { (objects, error) in
             
-            if error == nil {
                 if let objects = objects {
                     for object in objects {
                         print(object)
@@ -92,7 +91,6 @@ extension UIViewController {
                         }
                     }
                 }
-            }
             
         }
 

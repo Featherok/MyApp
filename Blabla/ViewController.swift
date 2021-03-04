@@ -9,8 +9,11 @@ import UIKit
 import AudioToolbox
 import Parse
 class ViewController: UIViewController {
+
     static let query = PFQuery(className: "UserSettings")
     override func viewDidLoad() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
         ViewController.query.whereKey("userName", equalTo: PFUser.current()?.username as Any)
         ViewController.query.findObjectsInBackground {
             (object, error) in
@@ -47,7 +50,13 @@ class ViewController: UIViewController {
 
     }
     
-    
+    @objc func appMovedToBackground() {
+        let currentUser = PFUser.current()
+        if currentUser != nil {
+            updateData(nameOfClass: "UserSettings", nameOfObject: "userNic", value: userName.text as Any)
+        }
+
+    }
     
     static var x = 0
     var showAlert = true
@@ -62,6 +71,7 @@ class ViewController: UIViewController {
 //        loadHomeScreen()
         let currentUser = PFUser.current()
         if currentUser == nil {
+            print("hello")
             loadHomeScreen()
         }
         
@@ -102,7 +112,6 @@ class ViewController: UIViewController {
     }
     @IBOutlet var tapAndSav: UIButton!
     @IBAction func tapAndSave(_ sender: Any) {
-        updateData(nameOfClass: "UserSettings", nameOfObject: "userNic", value: userName.text as Any)
         if nameForUser.text?.isEmpty == true {
             userName.text = "*user*"
         } else {
@@ -149,7 +158,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    public func loadHomeScreen() {
+    func loadHomeScreen() {
         let homeSettings = storyboard?.instantiateViewController(identifier: "SettingsPage")
         homeSettings?.modalPresentationStyle = .fullScreen
         
