@@ -50,7 +50,7 @@
                                 <state key="normal" title="Forgot password"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWZ-PY-UJB">
-                                <rect key="frame" x="186" y="443" width="42" height="30"/>
+                                <rect key="frame" x="186" y="433" width="42" height="30"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="logIn:" destination="BKU-Dj-caJ" eventType="touchUpInside" id="dtL-Pn-fZi"/>
@@ -69,7 +69,7 @@
                         <viewLayoutGuide key="safeArea" id="a6M-So-hK0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="uWZ-PY-UJB" firstAttribute="centerY" secondItem="chj-3x-Mf7" secondAttribute="centerY" constant="10" id="LIb-dY-Zvo"/>
+                            <constraint firstItem="uWZ-PY-UJB" firstAttribute="centerY" secondItem="chj-3x-Mf7" secondAttribute="centerY" id="LIb-dY-Zvo"/>
                             <constraint firstItem="HgC-gK-Zue" firstAttribute="centerY" secondItem="chj-3x-Mf7" secondAttribute="centerY" constant="50" id="MqB-dv-72K"/>
                             <constraint firstItem="tY9-wS-kHZ" firstAttribute="centerY" secondItem="chj-3x-Mf7" secondAttribute="centerY" constant="140" id="XAx-R8-f6g"/>
                             <constraint firstItem="HgC-gK-Zue" firstAttribute="centerX" secondItem="chj-3x-Mf7" secondAttribute="centerX" id="deY-rl-4zw"/>
@@ -125,8 +125,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*user*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39W-mZ-yn1">
-                                <rect key="frame" x="177" y="430" width="90" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*user*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39W-mZ-yn1">
+                                <rect key="frame" x="182" y="430" width="90" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -222,7 +222,7 @@
                         <color key="tintColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="okj-dc-hpG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H2r-5G-8AD"/>
-                            <constraint firstItem="39W-mZ-yn1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="15" id="LTD-hj-9gq"/>
+                            <constraint firstItem="39W-mZ-yn1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="20" id="LTD-hj-9gq"/>
                             <constraint firstItem="OKm-oQ-yXy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="40" id="OkO-eS-T5t"/>
                             <constraint firstItem="LkS-7X-O12" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PfK-er-ZQc"/>
                             <constraint firstItem="ahU-4n-D4Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-50" id="byf-FC-NnX"/>

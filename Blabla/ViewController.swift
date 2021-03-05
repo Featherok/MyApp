@@ -9,27 +9,19 @@ import UIKit
 import AudioToolbox
 import Parse
 class ViewController: UIViewController {
-
-    static let query = PFQuery(className: "UserSettings")
+    let query = PFQuery(className: "UserSettings")
     override func viewDidLoad() {
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
-        ViewController.query.whereKey("userName", equalTo: PFUser.current()?.username as Any)
-        ViewController.query.findObjectsInBackground {
+        query.whereKey("userName", equalTo: PFUser.current()?.username! as Any)
+        query.findObjectsInBackground {
             (object, error) in
             
             
             if let objects = object {
                 for object in objects {
-                    self.userName.text = object["userNic"] as? String
-
+                    self.userName.text = object["userName"] as? String
                 }
                 
                 }
-//            static let tempT = object
-//            func temp() -> [PFObject] {
-//                return object!
-//            }
             
             if error == nil {
                 
@@ -41,9 +33,6 @@ class ViewController: UIViewController {
     
         super.viewDidLoad()
         ViewController.x = 0
-        setupUI()
-        
-
         
         self.hideKeyboardWhenTappedAround()
         nameForUser.isUserInteractionEnabled = false
@@ -94,16 +83,11 @@ class ViewController: UIViewController {
     @IBOutlet var nameForUser: UITextField!
     {
         didSet {
-//            hideKeyboardWhenTappedAround()
-            nameForUser.borderStyle = .none
             
+            nameForUser.borderStyle = .none
 
         }
       }
-    private func setupUI() {
-        view.setNeedsDisplay()
-        view.snapshotView(afterScreenUpdates: true)
-    }
     @IBOutlet var userName: UILabel! {
         didSet {
             
@@ -112,6 +96,7 @@ class ViewController: UIViewController {
     }
     @IBOutlet var tapAndSav: UIButton!
     @IBAction func tapAndSave(_ sender: Any) {
+        
         if nameForUser.text?.isEmpty == true {
             userName.text = "*user*"
         } else {
@@ -142,7 +127,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func logOutTheApp(_ sender: UIButton) {
-
+        saveData(nameOfClass: "UserSettings", nameOfObject: "userName", value: userName.text!)
         let sv = UIViewController.displaySpinner(onView: self.view)
         PFUser.logOutInBackground { (error: Error?) in
             UIViewController.removeSpinner(spinner: sv)
@@ -158,7 +143,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    func loadHomeScreen() {
+    public func loadHomeScreen() {
         let homeSettings = storyboard?.instantiateViewController(identifier: "SettingsPage")
         homeSettings?.modalPresentationStyle = .fullScreen
         

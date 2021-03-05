@@ -850,7 +850,7 @@ extension _ParseEncoder {
         } else if value is _JSONStringDictionaryEncodableMarker {
             //COREY: DON'T remove the force unwrap, it will crash the app
             // swiftlint:disable:next force_cast
-            return try self.box(value as! [String : Encodable])
+            return try self.box(value)
         } else if value is PointerType {
             ignoreSkipKeys = true
         }
