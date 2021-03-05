@@ -126,7 +126,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="*user*" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39W-mZ-yn1">
-                                <rect key="frame" x="182" y="430" width="90" height="36"/>
+                                <rect key="frame" x="172" y="430" width="150" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="qDa-FR-7qs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -222,14 +225,14 @@
                         <color key="tintColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="okj-dc-hpG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="H2r-5G-8AD"/>
-                            <constraint firstItem="39W-mZ-yn1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="20" id="LTD-hj-9gq"/>
                             <constraint firstItem="OKm-oQ-yXy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="40" id="OkO-eS-T5t"/>
                             <constraint firstItem="LkS-7X-O12" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PfK-er-ZQc"/>
                             <constraint firstItem="ahU-4n-D4Z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-50" id="byf-FC-NnX"/>
-                            <constraint firstItem="39W-mZ-yn1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="e2M-Ib-3t5"/>
                             <constraint firstItem="okj-dc-hpG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="350" id="uoZ-kV-chz"/>
                             <constraint firstItem="ahU-4n-D4Z" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="v3o-fR-2es"/>
                             <constraint firstItem="LkS-7X-O12" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="200" id="x9B-Gg-MYW"/>
+                            <constraint firstItem="39W-mZ-yn1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="y0O-Jm-uzK"/>
+                            <constraint firstItem="39W-mZ-yn1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="40" id="z4q-xr-Gcz"/>
                             <constraint firstItem="OKm-oQ-yXy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zMb-07-3hI"/>
                         </constraints>
                     </view>

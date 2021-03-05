@@ -13,15 +13,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         query.whereKey("userName", equalTo: PFUser.current()?.username! as Any)
         query.findObjectsInBackground {
-            (object, error) in
+            (objects, error) in
             
             
-            if let objects = object {
+            if let objects = objects {
                 for object in objects {
                     self.userName.text = object["userName"] as? String
                 }
-                
-                }
+            }
             
             if error == nil {
                 
