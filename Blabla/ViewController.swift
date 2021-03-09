@@ -9,29 +9,30 @@ import UIKit
 import AudioToolbox
 import Parse
 class ViewController: UIViewController {
-    let query = PFQuery(className: "UserSettings")
+
+
     override func viewDidLoad() {
-        query.whereKey("userName", equalTo: PFUser.current()?.username! as Any)
-        query.findObjectsInBackground {
-            (objects, error) in
-            
-            
-            if let objects = objects {
+        let q = PFQuery(className: "UserSettings")
+        q.whereKey("userName", equalTo: PFUser.current()?.username as Any)
+        q.findObjectsInBackground {
+            (objectToFind, error) in
+            if let objects = objectToFind {
                 for object in objects {
-                    self.userName.text = object["userName"] as? String
+                    self.userName.text = object["userNic"] as? String
                 }
-            }
-            
-            if error == nil {
-                
-                // succcess
             } else {
-                // fail
+                print(false)
             }
         }
+
+//        let notificationCenter = NotificationCenter.default
+//        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+
     
         super.viewDidLoad()
         ViewController.x = 0
+        
+
         
         self.hideKeyboardWhenTappedAround()
         nameForUser.isUserInteractionEnabled = false
@@ -54,14 +55,12 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        super.viewDidAppear(true)
-//        loadHomeScreen()
-        let currentUser = PFUser.current()
-        if currentUser == nil {
-            print("hello")
-            loadHomeScreen()
+        if PFUser.current() == nil {
+            print("its nil")
+            self.loadHomeScreen()
         }
+        super.viewDidAppear(false)
+
         
     }
     
@@ -75,15 +74,16 @@ class ViewController: UIViewController {
             presenter.sourceView = self.view
             presenter.sourceRect = self.view.bounds
         }
-        self.present(alertView, animated: true, completion: nil)
+        self.present(alertView, animated: false, completion: nil)
     }
 
     
     @IBOutlet var nameForUser: UITextField!
     {
         didSet {
-            
+//            hideKeyboardWhenTappedAround()
             nameForUser.borderStyle = .none
+            
 
         }
       }
@@ -95,7 +95,6 @@ class ViewController: UIViewController {
     }
     @IBOutlet var tapAndSav: UIButton!
     @IBAction func tapAndSave(_ sender: Any) {
-        
         if nameForUser.text?.isEmpty == true {
             userName.text = "*user*"
         } else {
@@ -126,7 +125,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func logOutTheApp(_ sender: UIButton) {
-        saveData(nameOfClass: "UserSettings", nameOfObject: "userName", value: userName.text!)
+
         let sv = UIViewController.displaySpinner(onView: self.view)
         PFUser.logOutInBackground { (error: Error?) in
             UIViewController.removeSpinner(spinner: sv)
@@ -142,7 +141,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    public func loadHomeScreen() {
+    func loadHomeScreen() {
         let homeSettings = storyboard?.instantiateViewController(identifier: "SettingsPage")
         homeSettings?.modalPresentationStyle = .fullScreen
         
